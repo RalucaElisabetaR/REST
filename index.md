@@ -1,73 +1,54 @@
-# REST: Representational State Transfer
+# **REST Cheat Sheet**
 
-REST, or Representational State Transfer, is an architectural style designed for networked applications. It utilizes a stateless, client-server, cacheable communications protocol, with the HTTP protocol being the most commonly used medium. REST is favored in web services development due to its straightforward approach and reliance on the existing infrastructure and capabilities of the internet's HTTP. This design choice allows REST to achieve its goals without the need for inventing new standards, frameworks, or technologies.
+## **Introduction to REST**
+`REST` (**Representational State Transfer**) is an architectural style for designing networked applications. It uses a stateless, client-server, cacheable communications protocol, primarily the HTTP protocol. REST simplifies web services by leveraging existing protocols and conventions, focusing on resources identified by URLs and standard HTTP methods.
 
-## Core Concepts of REST
+## **Core Principles of REST**
 
-The essence of REST revolves around **resources**, which are identified by URLs, and the **methods** defined by the HTTP protocol to interact with these resources. RESTful applications leverage HTTP requests to:
+### **Client-Server Architecture**
+- Separates concerns between client (user interface) and server (data storage).
+- Promotes independence and scalability.
 
-- **Post data** (create or update resources),
-- **Read data** (e.g., execute queries), and
-- **Delete data**,
+### **Statelessness**
+- Each request from client to server must contain all the information needed to understand and complete the request. No client context is stored on the server between requests.
 
-effectively treating web services as a resource platform where create, read, update, and delete (CRUD) operations can be executed.
+### **Cacheability**
+- Responses must be defined as cacheable or not. This helps improve performance and scalability.
 
-## REST Principles
+### **Uniform Interface**
+- Simplifies and decouples the architecture, allowing each part to evolve independently.
+- **Resource Identification in Requests**: Resources are identified using URIs.
+- **Resource Manipulation Through Representations**: When a client has a representation of a resource, it has enough information to modify or delete the resource on the server.
+- **Self-descriptive Messages**: Each message includes enough information to describe how to process it.
+- **Hypermedia as the Engine of Application State (HATEOAS)**: Clients change state through links provided dynamically by server responses.
 
-- **Client-Server Architecture**: Separate concerns between the client (front end) and the server (back end).
-- **Stateless**: Each request from client to server must contain all information needed to complete the request.
-- **Cacheable**: Mark resources as cacheable or non-cacheable to control reuse of responses.
-- **Uniform Interface**: Simplify the architecture by applying general rules for resource interaction.
-  - **Resource-Based**: Resources are identified by URIs.
-  - **Manipulation of Resources Through Representations**: Clients work with resource representations.
-  - **Self-descriptive Messages**: Messages include detailed information for processing.
-  - **Hypermedia as the Engine of Application State (HATEOAS)**: Application state is managed through hyperlinks.
+### **Layered System**
+- The client cannot tell whether it is connected directly to the end server, or an intermediary. This promotes security and scalability.
 
-## HTTP Methods
+## **HTTP Methods**
+- **`GET`**: Retrieve information about a resource.
+- **`POST`**: Create a new resource.
+- **`PUT`**: Update an existing resource.
+- **`DELETE`**: Remove a resource.
+- **`PATCH`**: Apply partial updates to a resource.
+- **`OPTIONS`**: Describe the communication options for the target resource.
+- **`HEAD`**: Similar to `GET` but without the response body.
 
-- **GET**: Retrieve resource information.
-- **POST**: Create a new resource.
-- **PUT**: Update an existing resource.
-- **DELETE**: Remove a resource.
-- **PATCH**: Apply partial updates to a resource.
-- **OPTIONS**: Get supported HTTP methods.
-- **HEAD**: Get headers for a resource.
+## **Status Codes**
+- **2xx Success**: `200 OK`, `201 Created`, `204 No Content`
+- **3xx Redirection**: `301 Moved Permanently`, `304 Not Modified`
+- **4xx Client Error**: `400 Bad Request`, `401 Unauthorized`, `403 Forbidden`, `404 Not Found`, `405 Method Not Allowed`
+- **5xx Server Error**: `500 Internal Server Error`, `503 Service Unavailable`
 
-## Status Codes
+## **Best Practices**
+- Use plural nouns for resource names (e.g., `/users`).
+- Be consistent with naming conventions.
+- Nest resources to represent relationships (e.g., `/users/123/posts`).
+- Use HTTP headers for authentication, status codes for responses, and consider caching headers to improve performance.
+- Secure APIs using HTTPS and tokens (OAuth, JWT).
+- Implement error handling and meaningful status codes.
+- Include versioning in the API path (e.g., `/api/v1/resources`).
 
-### 2xx Success
 
-- `200 OK`: Success with response data.
-- `201 Created`: Resource created.
-- `204 No Content`: Success without response data.
-
-### 3xx Redirection
-
-- `301 Moved Permanently`: Resource moved.
-- `304 Not Modified`: Resource not modified since last request.
-
-### 4xx Client Error
-
-- `400 Bad Request`: Invalid request.
-- `401 Unauthorized`: Authentication required.
-- `403 Forbidden`: Request not permitted.
-- `404 Not Found`: Resource not found.
-- `405 Method Not Allowed`: HTTP method not allowed.
-
-### 5xx Server Error
-
-- `500 Internal Server Error`: Generic server error.
-- `503 Service Unavailable`: Server unavailable.
-
-## Best Practices
-
-- Use **nouns** for resource paths (e.g., `/users`).
-- Be consistent in naming and format.
-- Use **plural** nouns for resources.
-- Represent relationships with nested resources (e.g., `/users/123/posts`).
-- Use HTTP headers for content type and authentication.
-- Include **hypermedia links** in responses to guide clients.
-- Apply appropriate HTTP status codes for responses.
-- Secure APIs with **HTTPS** and **OAuth/JWT**.
 
 This document summarizes key REST principles, methods, status codes, and best practices for designing and interacting with RESTful APIs.
