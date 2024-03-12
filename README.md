@@ -62,4 +62,4 @@ effectively treating web services as a resource platform where create, read, upd
 - Apply appropriate HTTP status codes for responses.
 - Secure APIs with **HTTPS** and **OAuth/JWT**.
 
-This cheat sheet summarizes key REST principles, methods, status codes, and best practices for designing and interacting with RESTful APIs.
+This document summarizes key REST principles, methods, status codes, and best practices for designing and interacting with RESTful APIs.
